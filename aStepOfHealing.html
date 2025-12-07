@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Khotwat Shifa - خطوة شفاء</title>
+    <style>
+        :root {
+            --primary-blue: #2A6394;
+            --accent-green: #6DB343;
+            --bg-color: #F4F8FB;
+            --text-color: #333;
+            --white: #ffffff;
+            --card-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            padding-bottom: 50px;
+        }
+
+        /* HEADER */
+        header {
+            background-color: var(--white);
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            border-bottom: 3px solid var(--accent-green);
+        }
+
+        .logo-container img {
+            height: 90px; 
+            width: auto;
+            display: block;
+        }
+
+        .lang-btn {
+            background: var(--primary-blue);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: background 0.3s;
+        }
+        
+        .lang-btn:hover {
+            background-color: #1e4b72;
+        }
+
+        /* HERO SECTION */
+        .hero {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(180deg, #ffffff 0%, #F4F8FB 100%);
+        }
+
+        .hero h1 {
+            color: var(--primary-blue);
+            margin: 0 0 10px 0;
+            font-size: 1.8rem;
+        }
+
+        .hero p {
+            color: #666;
+            margin: 0;
+            font-size: 1.1rem;
+        }
+
+        /* CARDS CONTAINER */
+        .card-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            padding: 0 20px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* INDIVIDUAL CARDS */
+        .info-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: var(--card-shadow);
+            border-left: 6px solid var(--primary-blue);
+            transition: transform 0.2s;
+        }
+
+        .info-card.cancer {
+            border-left: 6px solid var(--accent-green);
+        }
+
+        .info-card h2 {
+            margin-top: 0;
+            color: var(--primary-blue);
+            font-size: 1.4rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+        }
+
+        .info-card h2 span {
+            font-size: 1.5rem;
+        }
+        
+        /* TEXT STYLING WITHIN CARDS */
+        .card-text {
+            line-height: 1.6;
+            color: #444;
+        }
+        
+        .card-text h3 {
+            color: var(--accent-green);
+            font-size: 1.1rem;
+            margin-top: 25px;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        
+        /* Remove margin from first header in card */
+        .card-text h3:first-child {
+            margin-top: 0;
+        }
+
+        .card-text ul {
+            padding-left: 20px;
+            margin-top: 5px;
+        }
+
+        .card-text li {
+            margin-bottom: 8px;
+        }
+
+        .card-text strong {
+            color: var(--primary-blue);
+        }
+
+        /* RTL SUPPORT (For Arabic) */
+        body.rtl {
+            direction: rtl;
+            text-align: right;
+        }
+
+        body.rtl .info-card {
+            border-left: none;
+            border-right: 6px solid var(--primary-blue);
+        }
+
+        body.rtl .info-card.cancer {
+            border-right: 6px solid var(--accent-green);
+        }
+        
+        body.rtl .card-text ul {
+            padding-left: 0;
+            padding-right: 20px;
+        }
+
+        /* FOOTER */
+        footer {
+            text-align: center;
+            padding: 30px 20px;
+            font-size: 0.85rem;
+            color: #888;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo-container">
+            <img src="file:///C:/Users/pc/OneDrive/Desktop/M7md/DiabetesLogo.png" alt="Step of Healing Logo">
+        </div>
+        <button class="lang-btn" onclick="toggleLanguage()">عربي</button>
+    </header>
+
+    <div class="hero">
+        <h1 id="hero-title">Welcome to Step of Healing</h1>
+        <p id="hero-sub">Your guide to health: Diabetes & Cancer Awareness.</p>
+    </div>
+
+    <div class="card-container">
+        <div class="info-card">
+            <h2 id="diabetes-title">Diabetes Info <span>🩸</span></h2>
+            <div id="diabetes-text" class="card-text">
+                <h3>Overview</h3>
+                <p>Diabetes refers to a group of diseases that affect how the body uses blood sugar (glucose). Glucose is a vital source of energy for the cells that make up muscles and tissues. It is also the brain's main source of fuel.</p>
+                <p>Chronic diabetes conditions include Type 1 and Type 2 diabetes. Potentially reversible diabetes conditions include prediabetes and gestational diabetes.</p>
+                
+                <h3>Symptoms</h3>
+                <p>Symptoms depend on how high your blood sugar is. Some people may not have symptoms. In Type 1, symptoms tend to come on quickly.</p>
+                <ul>
+                    <li>Increased thirst and frequent urination.</li>
+                    <li>Unintended weight loss.</li>
+                    <li>Presence of ketones in the urine.</li>
+                    <li>Fatigue and weakness.</li>
+                    <li>Blurred vision and slow-healing sores.</li>
+                    <li>Frequent infections (gums, skin, etc.).</li>
+                </ul>
+
+                <h3>Complications</h3>
+                <p>Long-term complications develop gradually. They can include:</p>
+                <ul>
+                    <li><strong>Cardiovascular disease:</strong> Increased risk of heart attack and stroke.</li>
+                    <li><strong>Nerve & Kidney damage:</strong> Affecting feet and filtration systems.</li>
+                    <li><strong>Eye damage:</strong> Can lead to blindness.</li>
+                    <li><strong>Skin conditions:</strong> Susceptibility to infections.</li>
+                    <li><strong>Alzheimer's risk.</strong></li>
+                </ul>
+
+                <h3>Prevention</h3>
+                <ul>
+                    <li><strong>Eat Healthy:</strong> Choose foods lower in fat and calories and higher in fiber.</li>
+                    <li><strong>Get Physical:</strong> Aim for about 30 minutes of moderate aerobic activity daily.</li>
+                    <li><strong>Lose Excess Weight:</strong> Losing 7% of your body weight can reduce the risk.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="info-card cancer">
+            <h2 id="cancer-title">Cancer Awareness <span>🎗️</span></h2>
+            <div id="cancer-text" class="card-text">
+                 <h3>Overview</h3>
+                 <p>Cancer refers to a large number of diseases characterized by the development of abnormal cells that divide uncontrollably. It is the second leading cause of death globally, though survival rates are improving.</p>
+                 
+                 <h3>Symptoms</h3>
+                 <p>Signs vary by body part, but general symptoms include:</p>
+                 <ul>
+                     <li>Fatigue or lump/thickening felt under the skin.</li>
+                     <li>Weight changes (unintended loss or gain).</li>
+                     <li>Skin changes (yellowing, darkening, or redness).</li>
+                     <li>Changes in bowel or bladder habits.</li>
+                     <li>Persistent cough, trouble breathing, or difficulty swallowing.</li>
+                     <li>Unexplained joint pain, fevers, or night sweats.</li>
+                 </ul>
+
+                 <h3>Causes & Risk Factors</h3>
+                 <p>Cancer is caused by mutations in DNA. Risk factors include:</p>
+                 <ul>
+                     <li><strong>Age:</strong> Most common in people 65 years or older.</li>
+                     <li><strong>Habits:</strong> Smoking, excessive alcohol, and unsafe sun exposure.</li>
+                     <li><strong>Family History:</strong> Inherited genetic mutations.</li>
+                     <li><strong>Environment:</strong> Exposure to harmful chemicals (like asbestos) or passive smoking.</li>
+                 </ul>
+
+                 <h3>Prevention</h3>
+                 <ul>
+                     <li><strong>Stop Smoking:</strong> This reduces risk for many types of cancer.</li>
+                     <li><strong>Sun Safety:</strong> Avoid excessive sun and use sunscreen.</li>
+                     <li><strong>Healthy Diet:</strong> Eat plenty of fruits and vegetables; limit processed meats.</li>
+                     <li><strong>Exercise:</strong> Aim for 30 minutes of activity most days.</li>
+                     <li><strong>Vaccinations:</strong> Hepatitis B and HPV vaccines can prevent certain cancers.</li>
+                 </ul>
+            </div>
+        </div>
+        
+        <div class="info-card">
+            <h2 id="about-title">About Us</h2>
+            <div id="about-text" class="card-text">
+                "Khotwat Shifa" is an initiative dedicated to raising health awareness and supporting patients in our community.
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        
+    </footer>
+
+    <script>
+        const content = {
+            en: {
+                btn: "عربي",
+                heroTitle: "Welcome to Step of Healing",
+                heroSub: "Your guide to health: Diabetes & Cancer Awareness.",
+                
+                // Diabetes English
+                diabetesTitle: "Diabetes Info",
+                diabetesHTML: `
+                    <h3>Overview</h3>
+                    <p>Diabetes refers to a group of diseases that affect how the body uses blood sugar (glucose). Glucose is a vital source of energy for the cells that make up muscles and tissues. It is also the brain's main source of fuel.</p>
+                    <p>Chronic diabetes conditions include Type 1 and Type 2 diabetes. Potentially reversible diabetes conditions include prediabetes and gestational diabetes.</p>
+                    
+                    <h3>Symptoms</h3>
+                    <p>Symptoms depend on how high your blood sugar is. Some people may not have symptoms. In Type 1, symptoms tend to come on quickly.</p>
+                    <ul>
+                        <li>Increased thirst and frequent urination.</li>
+                        <li>Unintended weight loss.</li>
+                        <li>Presence of ketones in the urine.</li>
+                        <li>Fatigue and weakness.</li>
+                        <li>Blurred vision and slow-healing sores.</li>
+                        <li>Frequent infections (gums, skin, etc.).</li>
+                    </ul>
+
+                    <h3>Complications</h3>
+                    <p>Long-term complications develop gradually. They can include:</p>
+                    <ul>
+                        <li><strong>Cardiovascular disease:</strong> Increased risk of heart attack and stroke.</li>
+                        <li><strong>Nerve & Kidney damage:</strong> Affecting feet and filtration systems.</li>
+                        <li><strong>Eye damage:</strong> Can lead to blindness.</li>
+                        <li><strong>Skin conditions:</strong> Susceptibility to infections.</li>
+                        <li><strong>Alzheimer's risk.</strong></li>
+                    </ul>
+
+                    <h3>Prevention</h3>
+                    <ul>
+                        <li><strong>Eat Healthy:</strong> Choose foods lower in fat and calories and higher in fiber.</li>
+                        <li><strong>Get Physical:</strong> Aim for about 30 minutes of moderate aerobic activity daily.</li>
+                        <li><strong>Lose Excess Weight:</strong> Losing 7% of your body weight can reduce the risk.</li>
+                    </ul>
+                `,
+
+                // Cancer English
+                cancerTitle: "Cancer Awareness",
+                cancerHTML: `
+                    <h3>Overview</h3>
+                    <p>Cancer refers to a large number of diseases characterized by the development of abnormal cells that divide uncontrollably and destroy normal body tissue. It is the second leading cause of death globally, but survival rates are improving.</p>
+                    
+                    <h3>Symptoms</h3>
+                    <p>Signs vary by body part, but general symptoms include:</p>
+                    <ul>
+                        <li>Fatigue or a lump/thickening felt under the skin.</li>
+                        <li>Weight changes (unintended loss or gain).</li>
+                        <li>Skin changes (yellowing, darkening, or redness).</li>
+                        <li>Changes in bowel or bladder habits.</li>
+                        <li>Persistent cough, trouble breathing, or difficulty swallowing.</li>
+                        <li>Unexplained joint pain, fevers, or night sweats.</li>
+                    </ul>
+
+                    <h3>Causes & Risk Factors</h3>
+                    <p>Cancer is caused by mutations in DNA. Risk factors include:</p>
+                    <ul>
+                        <li><strong>Age:</strong> Most common in people 65 years or older.</li>
+                        <li><strong>Habits:</strong> Smoking, alcohol, and unsafe sun exposure.</li>
+                        <li><strong>Family History:</strong> Inherited genetic mutations.</li>
+                        <li><strong>Environment:</strong> Exposure to harmful chemicals (like asbestos) or passive smoking.</li>
+                    </ul>
+
+                    <h3>Complications</h3>
+                    <p>Cancer and its treatment can cause pain, fatigue, nausea, weight loss, and chemical changes in your body. It can also spread (metastasize) to other parts of the body.</p>
+
+                    <h3>Prevention</h3>
+                    <ul>
+                        <li><strong>Stop Smoking:</strong> This reduces risk for lung and many other cancers.</li>
+                        <li><strong>Sun Safety:</strong> Stay in shade and use sunscreen.</li>
+                        <li><strong>Healthy Diet:</strong> Eat plenty of fruits and vegetables; limit processed meats.</li>
+                        <li><strong>Exercise:</strong> Aim for 30 minutes of activity most days.</li>
+                        <li><strong>Vaccinations:</strong> Hepatitis B and HPV vaccines can prevent certain cancers.</li>
+                    </ul>
+                `,
+
+                aboutTitle: "About Us",
+                aboutHTML: `"Khotwat Shifa" is an initiative dedicated to raising health awareness and supporting patients in our community.`
+            },
+            ar: {
+                btn: "English",
+                heroTitle: "مرحباً بكم في خطوة شفاء",
+                heroSub: "دليلك للصحة: التوعية بالسكري والسرطان.",
+
+                // Diabetes Arabic
+                diabetesTitle: "معلومات عن السكري",
+                diabetesHTML: `
+                    <h3>نظرة عامة</h3>
+                    <p>يشير داء السكري إلى مجموعة من الأمراض التي تؤثر على كيفية استهلاك الجسم لسكر الدم (الغلوكوز). الغلوكوز مصدر مهم للطاقة للخلايا والدماغ.</p>
+                    <p>تشمل حالات السكري المزمن النوعين الأول والثاني. وتشمل الحالات القابلة للعلاج مقدمات السكري والسكري الحملي.</p>
+
+                    <h3>الأعراض</h3>
+                    <p>تعتمد الأعراض على مدى ارتفاع السكر. قد لا تظهر أعراض في البداية. تشمل الأعراض الشائعة:</p>
+                    <ul>
+                        <li>الشعور بالعطش أكثر من المعتاد وكثرة التبول.</li>
+                        <li>فقدان الوزن من دون قصد.</li>
+                        <li>وجود كيتونات في البول (نتيجة تكسر العضلات).</li>
+                        <li>الشعور بالتعب والضعف والرؤية الضبابية.</li>
+                        <li>بطء التئام القروح والعدوى المتكررة.</li>
+                    </ul>
+
+                    <h3>المضاعفات</h3>
+                    <p>تتطور المضاعفات تدريجياً، وكلما طالت فترة الإصابة زاد الخطر. تشمل:</p>
+                    <ul>
+                        <li><strong>أمراض القلب والأوعية الدموية:</strong> النوبات القلبية والسكتة الدماغية.</li>
+                        <li><strong>تلف الأعصاب والكلى:</strong> خدر في الأطراف ومشاكل في الكلى.</li>
+                        <li><strong>تلف العين:</strong> قد يؤدي إلى العمى.</li>
+                        <li><strong>أمراض الجلد والزهايمر.</strong></li>
+                    </ul>
+
+                    <h3>الوقاية</h3>
+                    <ul>
+                        <li><strong>تناوُل أطعمة صحية:</strong> اختر أطعمة منخفضة الدهون وغنية بالألياف.</li>
+                        <li><strong>ممارسة الأنشطة البدنية:</strong> 30 دقيقة من النشاط المعتدل يومياً.</li>
+                        <li><strong>التخلص من الوزن الزائد:</strong> إنقاص 7% من وزن الجسم يقلل الخطر.</li>
+                    </ul>
+                `,
+
+                // Cancer Arabic
+                cancerTitle: "التوعية بالسرطان",
+                cancerHTML: `
+                    <h3>نظرة عامة</h3>
+                    <p>يشير السرطان إلى أمراض تتميز بتطور خلايا شاذة تنقسم بطريقة لا يمكن السيطرة عليها وتدمر أنسجة الجسم. هو السبب الثاني للوفاة عالمياً، لكن معدلات البقاء تتحسن.</p>
+
+                    <h3>الأعراض</h3>
+                    <p>تختلف الأعراض حسب الجزء المصاب، وتشمل:</p>
+                    <ul>
+                        <li>الإرهاق أو وجود كتلة تحت الجلد.</li>
+                        <li>تغيّرات في الوزن (زيادة أو نقصان).</li>
+                        <li>تغيّرات في الجلد (اصفرار، اسمرار، أو احمرار).</li>
+                        <li>تغيّرات في عادات التبرّز والتبوّل.</li>
+                        <li>سعال مستمر، صعوبة في البلع، أو عسر هضم.</li>
+                        <li>حمى أو تعرّق ليلي أو ألم مفاصل بلا سبب.</li>
+                    </ul>
+
+                    <h3>الأسباب وعوامل الخطر</h3>
+                    <p>يحدث السرطان بسبب طفرات في الحمض النووي (DNA). تشمل عوامل الخطر:</p>
+                    <ul>
+                        <li><strong>العمر:</strong> أكثر شيوعاً فوق سن 65.</li>
+                        <li><strong>العادات:</strong> التدخين، الكحول، والتعرض للشمس.</li>
+                        <li><strong>التاريخ العائلي:</strong> الطفرات الوراثية.</li>
+                        <li><strong>البيئة:</strong> المواد الكيميائية والتدخين السلبي.</li>
+                    </ul>
+
+                    <h3>المضاعفات</h3>
+                    <p>قد يسبب السرطان الألم، الإرهاق، الغثيان، فقدان الوزن، وانتشار المرض (الانبثاث) إلى أجزاء أخرى من الجسم.</p>
+
+                    <h3>الوقاية</h3>
+                    <ul>
+                        <li><strong>أقلِع عن التدخين:</strong> يقلل خطر الإصابة بسرطان الرئة وغيره.</li>
+                        <li><strong>تجنَّب الشمس:</strong> استخدم واقي الشمس وابحث عن الظل.</li>
+                        <li><strong>نظام غذائي صحي:</strong> أكثر من الفواكه والخضراوات.</li>
+                        <li><strong>مارس الرياضة:</strong> 30 دقيقة معظم أيام الأسبوع.</li>
+                        <li><strong>التطعيمات:</strong> مثل لقاح التهاب الكبد B وفيروس الورم الحليمي.</li>
+                    </ul>
+                `,
+
+                aboutTitle: "من نحن",
+                aboutHTML: `مبادرة "خطوة شفاء" مكرسة لرفع الوعي الصحي وتقديم الدعم للمرضى في مجتمعنا.`
+            }
+        };
+
+        let currentLang = 'en';
+
+        function toggleLanguage() {
+            const body = document.body;
+            
+            if (currentLang === 'en') {
+                currentLang = 'ar';
+                body.classList.add('rtl'); 
+                
+                document.querySelector('.lang-btn').textContent = content.ar.btn;
+                document.getElementById('hero-title').textContent = content.ar.heroTitle;
+                document.getElementById('hero-sub').textContent = content.ar.heroSub;
+                
+                document.getElementById('diabetes-title').childNodes[0].textContent = content.ar.diabetesTitle + " ";
+                document.getElementById('diabetes-text').innerHTML = content.ar.diabetesHTML;
+                
+                document.getElementById('cancer-title').childNodes[0].textContent = content.ar.cancerTitle + " ";
+                document.getElementById('cancer-text').innerHTML = content.ar.cancerHTML;
+                
+                document.getElementById('about-title').textContent = content.ar.aboutTitle;
+                document.getElementById('about-text').innerHTML = content.ar.aboutHTML;
+
+            } else {
+                currentLang = 'en';
+                body.classList.remove('rtl'); 
+
+                document.querySelector('.lang-btn').textContent = content.en.btn;
+                document.getElementById('hero-title').textContent = content.en.heroTitle;
+                document.getElementById('hero-sub').textContent = content.en.heroSub;
+                
+                document.getElementById('diabetes-title').childNodes[0].textContent = content.en.diabetesTitle + " ";
+                document.getElementById('diabetes-text').innerHTML = content.en.diabetesHTML;
+                
+                document.getElementById('cancer-title').childNodes[0].textContent = content.en.cancerTitle + " ";
+                document.getElementById('cancer-text').innerHTML = content.en.cancerHTML;
+                
+                document.getElementById('about-title').textContent = content.en.aboutTitle;
+                document.getElementById('about-text').innerHTML = content.en.aboutHTML;
+            }
+        }
+    </script>
+</body>
+</html>
