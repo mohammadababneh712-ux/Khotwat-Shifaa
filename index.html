@@ -23,26 +23,52 @@
             padding-bottom: 50px;
         }
 
-        /* HEADER */
+        /* === UPDATED HEADER STYLES === */
         header {
             background-color: var(--white);
             padding: 10px 20px;
             display: flex;
             align-items: center;
-            justify-content: space-between;
+            /* Justify content end pushes the button to the right */
+            justify-content: flex-end; 
             position: sticky;
             top: 0;
             z-index: 100;
             box-shadow: 0 2px 5px rgba(0,0,0,0.05);
             border-bottom: 3px solid var(--accent-green);
+            /* Added relative position and height to allow centering */
+            position: relative;
+            min-height: 85px; 
+        }
+
+        /* New container style for centering */
+        .logo-container {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%); /* Perfect center trick */
+            display: flex;
+            flex-direction: column; /* Stacks img and text */
+            align-items: center;
+            justify-content: center;
         }
 
         .logo-container img {
-            height: 120px; 
+            height: 50px; /* Slightly adjusted size */
             width: auto;
             display: block;
         }
 
+        /* New styles for the Arabic brand text under logo */
+        .logo-brand-text {
+            color: var(--primary-blue); /* #2A6394 */
+            font-weight: bold;
+            font-size: 1rem;
+            margin-top: 5px;
+            white-space: nowrap; /* Keeps text on one line */
+        }
+
+        /* Language button styles */
         .lang-btn {
             background: var(--primary-blue);
             color: white;
@@ -53,16 +79,20 @@
             cursor: pointer;
             font-size: 0.9rem;
             transition: background 0.3s;
+            /* Added z-index to ensure it's clickable over the centered element if they overlap on tiny screens */
+            z-index: 2; 
         }
         
         .lang-btn:hover {
             background-color: #1e4b72;
         }
+        /* === END HEADER UPDATES === */
+
 
         /* HERO SECTION */
         .hero {
             text-align: center;
-            padding: 40px 20px;
+            padding: 50px 20px 40px 20px; /* Added more top padding to clear header */
             background: linear-gradient(180deg, #ffffff 0%, #F4F8FB 100%);
         }
 
@@ -132,7 +162,6 @@
             font-weight: bold;
         }
         
-        /* Remove margin from first header in card */
         .card-text h3:first-child {
             margin-top: 0;
         }
@@ -154,6 +183,11 @@
         body.rtl {
             direction: rtl;
             text-align: right;
+        }
+
+        /* Ensure header button stays on left in RTL mode */
+        body.rtl header {
+             justify-content: flex-end;
         }
 
         body.rtl .info-card {
@@ -493,6 +527,7 @@
 </body>
 
 </html>
+
 
 
 
